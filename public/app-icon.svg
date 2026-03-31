@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="broomGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0db6c7" />
+      <stop offset="100%" stop-color="#ff7b72" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="32" fill="#0f2434" />
+  <path d="M34 83V31h28c17 0 29 8 29 24 0 11-6 18-15 21 8 3 12 9 12 18 0 16-12 25-30 25H34Zm18-32h9c8 0 12-4 12-10 0-7-5-10-13-10h-8v20Zm0 18h10c8 0 13-3 13-10s-5-10-13-10H52v20Z" fill="url(#broomGradient)" />
+</svg>
