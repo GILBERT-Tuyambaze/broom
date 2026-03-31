@@ -3,52 +3,62 @@
 @layer base {
   :root,
   :root[data-theme="light"] {
-    --bg: #f6dcdc;
-    --bg-alt: #fff6f3;
-    --bg-soft: #f7e7e5;
-    --panel: rgba(255, 255, 255, 0.78);
-    --panel-strong: rgba(255, 251, 250, 0.92);
-    --surface: rgba(255, 255, 255, 0.62);
-    --surface-strong: rgba(255, 255, 255, 0.88);
-    --text: #5c4b4b;
-    --text-strong: #1a1a1a;
-    --muted: #9e7f7c;
-    --accent: #f2b8b5;
-    --accent-2: #efa7a3;
-    --accent-3: #f8d7d4;
+    --white-rock: #f4eee2;
+    --grey-goose: #d2d2c6;
+    --pink-daisy: #f4b5c1;
+    --lotus: #8b5c6d;
+    --thunder: #352b30;
+    --bg: var(--white-rock);
+    --bg-alt: color-mix(in srgb, var(--white-rock) 82%, white 18%);
+    --bg-soft: color-mix(in srgb, var(--white-rock) 64%, white 36%);
+    --panel: color-mix(in srgb, white 72%, var(--white-rock) 28%);
+    --panel-strong: color-mix(in srgb, white 82%, var(--white-rock) 18%);
+    --surface: color-mix(in srgb, white 62%, var(--grey-goose) 38%);
+    --surface-strong: color-mix(in srgb, white 76%, var(--grey-goose) 24%);
+    --text: color-mix(in srgb, var(--lotus) 62%, var(--thunder) 38%);
+    --text-strong: var(--thunder);
+    --muted: color-mix(in srgb, var(--lotus) 68%, var(--grey-goose) 32%);
+    --accent: var(--pink-daisy);
+    --accent-2: var(--lotus);
+    --accent-3: var(--grey-goose);
     --button-text: #ffffff;
-    --border: rgba(232, 207, 207, 0.9);
-    --ring: rgba(239, 167, 163, 0.24);
-    --glow-a: rgba(242, 184, 181, 0.22);
-    --glow-b: rgba(239, 167, 163, 0.24);
-    --glow-c: rgba(246, 220, 220, 0.5);
-    --grid-color: rgba(232, 207, 207, 0.48);
-    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --border: color-mix(in srgb, var(--grey-goose) 72%, var(--white-rock) 28%);
+    --ring: color-mix(in srgb, var(--pink-daisy) 42%, transparent 58%);
+    --glow-a: color-mix(in srgb, var(--pink-daisy) 28%, transparent 72%);
+    --glow-b: color-mix(in srgb, var(--lotus) 18%, transparent 82%);
+    --glow-c: color-mix(in srgb, var(--grey-goose) 34%, transparent 66%);
+    --grid-color: color-mix(in srgb, var(--grey-goose) 34%, transparent 66%);
+    --shadow-soft: 0 18px 48px color-mix(in srgb, var(--thunder) 12%, transparent 88%);
     color-scheme: light;
   }
 
   :root[data-theme="dark"] {
-    --bg: #130f24;
-    --bg-alt: #0b1325;
-    --bg-soft: #19152d;
-    --panel: rgba(28, 22, 49, 0.66);
-    --panel-strong: rgba(16, 14, 32, 0.84);
-    --surface: rgba(255, 255, 255, 0.06);
-    --surface-strong: rgba(31, 25, 55, 0.96);
-    --text: #c8bddb;
-    --text-strong: #f9f5ff;
-    --muted: #aa9fbe;
-    --accent: #c79cff;
-    --accent-2: #ffb592;
-    --accent-3: #8ed9ff;
-    --button-text: #261933;
-    --border: rgba(211, 195, 255, 0.12);
-    --ring: rgba(199, 156, 255, 0.24);
-    --glow-a: rgba(199, 156, 255, 0.24);
-    --glow-b: rgba(255, 181, 146, 0.18);
-    --glow-c: rgba(142, 217, 255, 0.14);
-    --grid-color: rgba(213, 198, 255, 0.06);
-    --shadow-soft: 0 24px 90px rgba(0, 0, 0, 0.34);
+    --white-rock: #f4eee2;
+    --grey-goose: #d2d2c6;
+    --pink-daisy: #f4b5c1;
+    --lotus: #8b5c6d;
+    --thunder: #352b30;
+    --bg: color-mix(in srgb, var(--thunder) 86%, black 14%);
+    --bg-alt: color-mix(in srgb, var(--thunder) 72%, var(--lotus) 28%);
+    --bg-soft: color-mix(in srgb, var(--thunder) 78%, var(--lotus) 22%);
+    --panel: color-mix(in srgb, var(--thunder) 78%, var(--lotus) 22%);
+    --panel-strong: color-mix(in srgb, var(--thunder) 86%, black 14%);
+    --surface: color-mix(in srgb, var(--lotus) 26%, transparent 74%);
+    --surface-strong: color-mix(in srgb, var(--thunder) 64%, var(--lotus) 36%);
+    --text: color-mix(in srgb, var(--white-rock) 76%, var(--grey-goose) 24%);
+    --text-strong: var(--white-rock);
+    --muted: color-mix(in srgb, var(--grey-goose) 56%, var(--pink-daisy) 44%);
+    --accent: var(--pink-daisy);
+    --accent-2: color-mix(in srgb, var(--lotus) 88%, var(--thunder) 12%);
+    --accent-3: var(--grey-goose);
+    --button-text: var(--white-rock);
+    --border: color-mix(in srgb, var(--lotus) 38%, var(--grey-goose) 18%);
+    --ring: color-mix(in srgb, var(--pink-daisy) 28%, transparent 72%);
+    --glow-a: color-mix(in srgb, var(--pink-daisy) 22%, transparent 78%);
+    --glow-b: color-mix(in srgb, var(--lotus) 28%, transparent 72%);
+    --glow-c: color-mix(in srgb, var(--grey-goose) 12%, transparent 88%);
+    --grid-color: color-mix(in srgb, var(--grey-goose) 10%, transparent 90%);
+    --shadow-soft: 0 28px 88px color-mix(in srgb, black 40%, transparent 60%);
     color-scheme: dark;
   }
 
@@ -60,7 +70,7 @@
   body {
     min-height: 100vh;
     background:
-      radial-gradient(circle at top, rgba(255, 255, 255, 0.24), transparent 32%),
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 32%),
       linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
     color: var(--text);
     font-family: "Manrope", sans-serif;
@@ -117,21 +127,21 @@
 
   .primary-btn {
     @apply inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition duration-300 hover:-translate-y-0.5;
-    background: var(--accent-2);
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
     color: var(--button-text);
     box-shadow: 0 18px 36px var(--ring);
   }
 
   .chip-btn {
     background: transparent;
-    border-color: var(--accent-2);
-    color: var(--accent-2);
+    border-color: color-mix(in srgb, var(--accent-2) 68%, white 32%);
+    color: color-mix(in srgb, var(--accent-2) 78%, var(--text-strong) 22%);
     @apply inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition duration-300 hover:-translate-y-0.5;
   }
 
   .chip-btn-active {
     @apply border-transparent;
-    background: var(--accent-2);
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
     color: var(--button-text);
   }
 
@@ -187,6 +197,19 @@
 }
 
 @layer utilities {
+  .landing-section {
+    @apply relative py-24 md:py-32;
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  @media (min-width: 768px) {
+    .landing-section {
+      padding-left: 8vw;
+      padding-right: 8vw;
+    }
+  }
+
   .grid-overlay {
     background-image:
       linear-gradient(var(--grid-color) 1px, transparent 1px),

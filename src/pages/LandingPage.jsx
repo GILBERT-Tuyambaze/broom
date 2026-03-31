@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AppBackdrop } from "../components/layout/AppBackdrop.jsx";
 import { BrandLogo } from "../components/layout/BrandLogo.jsx";
@@ -6,76 +7,85 @@ import { AppIcon } from "../components/shared/AppIcon.jsx";
 import { useAppContext } from "../context/AppContext.jsx";
 
 const NAV_ITEMS = [
-  { label: "Home", href: "#home" },
-  { label: "Community", href: "#community" },
-  { label: "Mentors", href: "#mentors" },
+  { label: "Platform", href: "#platform" },
   { label: "AI Support", href: "#ai-support" },
-  { label: "Stories", href: "#stories" },
-  { label: "Contact", href: "#footer" },
+  { label: "Mentorship", href: "#mentorship" },
+  { label: "Community", href: "#community" },
 ];
 
-const TRACKING_CARDS = [
+const FEATURE_PILLARS = [
   {
     icon: "calendar",
-    title: "Cycle tracking",
-    copy: "A softer calendar that shows body rhythm, phase color, and timing cues without confusion.",
+    title: "Body intelligence",
+    copy: "Cycle tracking, phase-aware rhythm, and clearer health reflection without information overload.",
   },
   {
     icon: "heart",
-    title: "Mood tracking",
-    copy: "Quick emotional check-ins that help users connect feelings with habits, energy, and rest.",
+    title: "Emotional awareness",
+    copy: "Mood check-ins, journaling cues, and calmer insight that connects feelings with lived context.",
   },
   {
-    icon: "chart",
-    title: "Insights",
-    copy: "Clear patterns that explain what may be happening instead of only showing raw data.",
+    icon: "spark",
+    title: "AI-guided support",
+    copy: "Personalized, suggestive guidance shaped by goals, habits, and recent signals instead of hard conclusions.",
+  },
+  {
+    icon: "users",
+    title: "Human empowerment",
+    copy: "Mentors, role models, and moderated community spaces that turn support into long-term growth.",
   },
 ];
 
-const BENEFITS = [
+const FLOW_ITEMS = [
   {
-    title: "Feel safer and more understood",
-    copy: "Broom creates a calm space where body changes, emotions, and questions feel easier to name.",
+    eyebrow: "Health",
+    title: "Understand what your body may be telling you",
+    copy: "Phase color, symptoms, and gentle trend signals make daily life easier to plan.",
   },
   {
-    title: "Make daily life easier to manage",
-    copy: "Cycle-aware prompts and reflection tools help with planning school, work, rest, and self-care.",
+    eyebrow: "Mind",
+    title: "Name emotions before they become overwhelming",
+    copy: "Reflection prompts help users notice patterns in stress, rest, and energy.",
   },
   {
-    title: "Grow with guidance that respects boundaries",
-    copy: "AI, community, and mentorship are shaped to support, not overwhelm, diagnose, or pressure.",
+    eyebrow: "Growth",
+    title: "Move from support into confidence and opportunity",
+    copy: "Broom grows beyond tracking into mentorship, role models, and skills for the future.",
   },
 ];
 
-const MENTORS = [
-  { name: "Arielle", field: "Technology mentor", tone: "Frontend, confidence, and study-to-career growth" },
-  { name: "Dr. Teta", field: "Health educator", tone: "Cycle literacy, wellbeing, and body awareness" },
-  { name: "Lina", field: "Leadership mentor", tone: "Confidence, communication, and entrepreneurship" },
+const MENTOR_CARDS = [
+  { name: "Arielle N.", role: "Frontend engineer", focus: "Career confidence and coding growth" },
+  { name: "Dr. Teta U.", role: "Health educator", focus: "Body literacy and wellbeing guidance" },
+  { name: "Lina M.", role: "Leadership mentor", focus: "Confidence, communication, and ambition" },
 ];
 
-const COMMUNITY_POSTS = [
+const COMMUNITY_CARDS = [
   {
     alias: "QuietOrbit12",
-    title: "Safe space for sharing",
-    copy: "How do you stay calm when stress and cramps happen in the same week?",
+    copy: "How do you stay gentle with yourself when school pressure and cramps happen together?",
   },
   {
     alias: "NovaLeaf",
-    title: "Anonymous community",
-    copy: "Does anyone plan difficult study sessions around higher-energy cycle days?",
+    copy: "Has anyone noticed they think more clearly during certain cycle days and plan around it?",
   },
-];
-
-const STORIES = [
-  { title: "From uncertainty to self-trust", copy: "A gentle story about learning body awareness and building confidence." },
-  { title: "Women building futures in tech", copy: "Role models showing what growth can look like across diverse communities." },
-  { title: "Support that becomes opportunity", copy: "How mentorship can turn reflection into direction and action." },
 ];
 
 export function LandingPage() {
   const { appState, startPreviewMode } = useAppContext();
   const navigate = useNavigate();
+  const [scrolled, setScrolled] = useState(false);
   const primaryPath = appState.user ? "/app/dashboard" : "/auth";
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handlePreview = () => {
     startPreviewMode();
@@ -83,296 +93,330 @@ export function LandingPage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden px-4 py-5 md:px-6">
+    <div className="relative min-h-screen overflow-x-clip bg-[linear-gradient(180deg,var(--bg),var(--bg-alt))]">
       <AppBackdrop />
 
-      <div className="relative mx-auto max-w-7xl space-y-8">
-        <header className="glass-panel-strong sticky top-4 z-40 flex flex-col gap-4 px-5 py-4 md:px-6">
-          <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
-            <BrandLogo
-              size="md"
-              withWordmark
-              title="Broom"
-              subtitle="Women&apos;s health and empowerment"
-              className="gap-4"
-              titleClassName="text-lg"
-              subtitleClassName="normal-case tracking-normal text-sm font-medium"
-            />
+      <header
+        className={`fixed inset-x-0 top-0 z-50 px-[5vw] py-4 transition duration-300 md:px-[8vw] ${
+          scrolled
+            ? "bg-[color:var(--panel-strong)]/90 shadow-[0_18px_60px_rgba(0,0,0,0.08)] backdrop-blur-2xl"
+            : "bg-transparent backdrop-blur-md"
+        }`}
+      >
+        <div className={`flex items-center justify-between gap-4 rounded-full border px-4 py-3 transition duration-300 md:px-5 ${
+          scrolled ? "border-[var(--border)] bg-[color:var(--surface)]/85" : "border-transparent bg-transparent"
+        }`}>
+          <BrandLogo
+            size="md"
+            withWordmark
+            title="Broom"
+            subtitle="Women&apos;s health and empowerment"
+            className="gap-4"
+            titleClassName="text-lg"
+            subtitleClassName="normal-case tracking-normal text-sm font-medium"
+          />
 
-            <div className="flex flex-wrap items-center gap-2">
-              <nav className="hidden items-center gap-2 xl:flex">
-                {NAV_ITEMS.map((item) => (
-                  <a key={item.label} href={item.href} className="chip-btn">
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-              <ThemeSwitcher />
-              <button type="button" className="icon-btn" aria-label="Search">
-                <AppIcon name="spark" className="h-4 w-4" />
-              </button>
-              <button type="button" className="icon-btn" aria-label="Notifications">
-                <AppIcon name="message" className="h-4 w-4" />
-              </button>
-              <Link to={primaryPath} className="icon-btn" aria-label="Profile">
-                <AppIcon name="user" className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-
-          <nav className="flex flex-wrap gap-2 xl:hidden">
+          <div className="hidden items-center gap-2 lg:flex">
             {NAV_ITEMS.map((item) => (
               <a key={item.label} href={item.href} className="chip-btn">
                 {item.label}
               </a>
             ))}
-          </nav>
-        </header>
+          </div>
 
-        <section id="home" className="glass-panel-strong overflow-hidden px-6 py-8 md:px-8 md:py-10 xl:px-12 xl:py-14">
-          <div className="grid gap-10 xl:grid-cols-[1fr_0.96fr] xl:items-center">
-            <div className="space-y-6">
-              <div className="inline-flex rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">
-                Calm support for growth, health, and confidence
+          <div className="flex items-center gap-2">
+            <ThemeSwitcher />
+            <Link to={primaryPath} className="primary-btn hidden sm:inline-flex">
+              {appState.user ? "Open workspace" : "Get started"}
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      <main className="relative z-10">
+        <section className="landing-section flex min-h-screen items-center pt-32" id="top">
+          <div className="grid w-full gap-16 xl:grid-cols-[1.08fr_0.92fr] xl:items-center">
+            <div className="space-y-8">
+              <div className="inline-flex rounded-full border border-[var(--border)] bg-[color:var(--surface)]/88 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">
+                A personal support ecosystem
               </div>
 
-              <div className="space-y-4">
-                <h1 className="max-w-4xl font-display text-5xl font-semibold leading-[0.96] tracking-tight text-[color:var(--text-strong)] md:text-7xl">
-                  Grow Into Your Strongest Self
+              <div className="space-y-5">
+                <h1 className="max-w-5xl font-display text-5xl font-semibold leading-[0.92] tracking-tight text-[color:var(--text-strong)] md:text-7xl xl:text-[5.7rem]">
+                  Understand your body. Protect your peace. Grow with support that evolves with you.
                 </h1>
-                <p className="max-w-2xl text-base leading-8 text-[var(--text)] md:text-lg">
-                  Understand your body, emotions, and future with guidance that evolves with you.
+                <p className="max-w-3xl text-lg leading-9 text-[var(--text)]">
+                  Broom is a calm, futuristic platform for women&apos;s health, emotional awareness, AI-guided support, mentorship, and safe community connection.
                 </p>
               </div>
 
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Link to={primaryPath} className="primary-btn justify-center">
-                  Get Started
+                  {appState.user ? "Enter your dashboard" : "Start with Broom"}
                 </Link>
-                <a href="#ai-support" className="chip-btn justify-center">
-                  Learn More
-                </a>
-              </div>
-
-              <div className="grid gap-3 md:grid-cols-3">
-                <ValueBadge eyebrow="Navigation" value="Simple" copy="Easy paths into health, AI, mentors, and community." />
-                <ValueBadge eyebrow="Design" value="Soft" copy="Rounded, light, and emotionally calm instead of harsh or clinical." />
-                <ValueBadge eyebrow="Access" value="Scalable" copy="Built to start simply and grow into a full support ecosystem." />
-              </div>
-            </div>
-
-            <div className="relative mx-auto w-full max-w-[32rem]">
-              <div className="absolute inset-0 rounded-[3rem] bg-[radial-gradient(circle_at_top,rgba(239,167,163,0.32),transparent_55%)] blur-3xl" />
-              <div className="relative flex items-center justify-center">
-                <div className="absolute right-4 top-6 rounded-[1.6rem] border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 shadow-[var(--shadow-soft)]">
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">Emotion-aware</p>
-                  <p className="mt-2 text-sm leading-6 text-[var(--text)]">Gentle check-ins and safer support cues</p>
-                </div>
-                <div className="absolute bottom-8 left-0 rounded-[1.6rem] border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 shadow-[var(--shadow-soft)]">
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">Mentorship</p>
-                  <p className="mt-2 text-sm leading-6 text-[var(--text)]">Verified guidance with clear boundaries</p>
-                </div>
-                <div className="relative h-[28rem] w-full rounded-[3rem] border border-[var(--border)] bg-[linear-gradient(180deg,#fffdfc_0%,#f8d7d4_100%)] p-5 shadow-[var(--shadow-soft)]">
-                  <div className="flex h-full flex-col justify-between rounded-[2.5rem] border border-[var(--border)] bg-[rgba(255,255,255,0.35)] p-6">
-                    <div className="flex items-center justify-between">
-                      <span className="rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">
-                        Personalized support
-                      </span>
-                      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-[color:var(--accent-2)]">
-                        <AppIcon name="heart" className="h-5 w-5" />
-                      </span>
-                    </div>
-                    <div className="mx-auto flex h-60 w-60 items-center justify-center rounded-full border-[14px] border-white bg-[radial-gradient(circle_at_top,#f8d7d4_0%,#f2b8b5_52%,#efa7a3_100%)] shadow-[0_20px_45px_rgba(239,167,163,0.28)]">
-                      <div className="flex h-44 w-44 items-center justify-center rounded-full bg-[rgba(255,255,255,0.32)]">
-                        <div className="flex h-36 w-36 items-center justify-center rounded-full bg-white/50">
-                          <span className="font-display text-6xl text-white">B</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid gap-3">
-                      <MockTile title="Body intelligence" copy="Cycle and symptom awareness that stays simple and readable." />
-                      <MockTile title="Mind intelligence" copy="Mood check-ins with insight, not overwhelm." />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="space-y-4">
-          <div className="max-w-3xl space-y-3">
-            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">Smart health and emotion tracking</p>
-            <h2 className="font-display text-3xl font-semibold text-[color:var(--text-strong)] md:text-4xl">
-              A cleaner foundation for understanding health, mood, and patterns.
-            </h2>
-          </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {TRACKING_CARDS.map((card) => (
-              <article key={card.title} className="glass-panel p-6 transition duration-300 hover:-translate-y-1">
-                <span className="flex h-12 w-12 items-center justify-center rounded-[1.25rem] bg-[linear-gradient(135deg,var(--accent),var(--accent-2))] text-white">
-                  <AppIcon name={card.icon} className="h-5 w-5" />
-                </span>
-                <h3 className="mt-5 font-display text-2xl font-semibold text-[color:var(--text-strong)]">{card.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[var(--text)]">{card.copy}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="ai-support" className="grid gap-6 xl:grid-cols-[0.92fr_1.08fr]">
-          <article className="glass-panel p-6 md:p-8">
-            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">Your personal AI guide</p>
-            <h2 className="mt-3 font-display text-3xl font-semibold text-[color:var(--text-strong)] md:text-4xl">
-              Support that adapts to the user without pretending to know everything.
-            </h2>
-            <p className="mt-4 text-sm leading-8 text-[var(--text)] md:text-base">
-              Broom&apos;s AI learns from habits, mood, cycle rhythm, and support preferences to offer calm, safe, and suggestive guidance.
-            </p>
-            <div className="mt-6 grid gap-3">
-              <SupportLine label="Learns over time" value="It remembers patterns and preferences to make support feel more personal." />
-              <SupportLine label="Safe language" value="It suggests, reflects, and encourages instead of diagnosing or making absolute claims." />
-              <SupportLine label="Works with people" value="AI is paired with community, mentorship, and human review rather than replacing them." />
-            </div>
-          </article>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {BENEFITS.map((benefit) => (
-              <article key={benefit.title} className="glass-panel-strong p-6 transition duration-300 hover:-translate-y-1">
-                <h3 className="font-display text-2xl font-semibold text-[color:var(--text-strong)]">{benefit.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[var(--text)]">{benefit.copy}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="mentors" className="space-y-4">
-          <div className="max-w-3xl space-y-3">
-            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">Mentorship</p>
-            <h2 className="font-display text-3xl font-semibold text-[color:var(--text-strong)] md:text-4xl">
-              Guidance from women who can help users imagine a bigger future.
-            </h2>
-          </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {MENTORS.map((mentor, index) => (
-              <article key={mentor.name} className="glass-panel-strong overflow-hidden p-6">
-                <div className="flex h-44 items-end rounded-[2rem] bg-[linear-gradient(180deg,#fffdfc_0%,#f8d7d4_100%)] p-5">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-2xl font-display text-[var(--accent-2)] shadow-[var(--shadow-soft)]">
-                    {index + 1}
-                  </div>
-                </div>
-                <h3 className="mt-5 font-display text-2xl font-semibold text-[color:var(--text-strong)]">{mentor.name}</h3>
-                <p className="mt-2 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">{mentor.field}</p>
-                <p className="mt-3 text-sm leading-7 text-[var(--text)]">{mentor.tone}</p>
-                <button type="button" className="primary-btn mt-5 w-full justify-center">
-                  Connect
+                <button type="button" onClick={handlePreview} className="chip-btn justify-center">
+                  Explore preview
                 </button>
-              </article>
-            ))}
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-3">
+                <FloatingStat value="Health + Mind" copy="One connected experience instead of disconnected tools." />
+                <FloatingStat value="Safe by design" copy="Privacy, moderation, and AI guardrails built into the product." />
+                <FloatingStat value="Built to scale" copy="Role-based dashboards for users, mentors, and admins." />
+              </div>
+            </div>
+
+            <div className="relative min-h-[34rem]">
+              <div className="absolute -left-10 top-10 h-48 w-48 rounded-full bg-[var(--glow-a)] blur-3xl" />
+              <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-[var(--glow-b)] blur-3xl" />
+
+              <div className="absolute right-[6%] top-[4%] rounded-[1.8rem] border border-[var(--border)] bg-[color:var(--surface-strong)]/90 p-4 shadow-[var(--shadow-soft)] backdrop-blur-xl">
+                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">Emotion aware</p>
+                <p className="mt-2 max-w-[12rem] text-sm leading-6 text-[var(--text)]">Gentle guidance that stays supportive instead of clinical.</p>
+              </div>
+
+              <div className="absolute left-[2%] top-[26%] rounded-[1.8rem] border border-[var(--border)] bg-[color:var(--surface-strong)]/90 p-4 shadow-[var(--shadow-soft)] backdrop-blur-xl">
+                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">Mentorship</p>
+                <p className="mt-2 max-w-[12rem] text-sm leading-6 text-[var(--text)]">Verified mentors with stronger boundaries and safer guidance.</p>
+              </div>
+
+              <div className="absolute bottom-[6%] right-[10%] rounded-[1.8rem] border border-[var(--border)] bg-[color:var(--surface-strong)]/90 p-4 shadow-[var(--shadow-soft)] backdrop-blur-xl">
+                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">Cycle rhythm</p>
+                <p className="mt-2 max-w-[12rem] text-sm leading-6 text-[var(--text)]">Readable phase signals and calmer planning support.</p>
+              </div>
+
+              <div className="absolute inset-x-[10%] inset-y-[10%] rounded-[3rem] border border-[var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.58),rgba(255,255,255,0.18))] p-6 shadow-[var(--shadow-soft)] backdrop-blur-2xl">
+                <div className="flex h-full flex-col justify-between rounded-[2.3rem] border border-[var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.45),rgba(255,255,255,0.18))] p-6">
+                  <div className="flex items-center justify-between">
+                    <span className="rounded-full border border-[var(--border)] bg-[color:var(--surface)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">
+                      Broom flow
+                    </span>
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--accent),var(--accent-2))] text-white">
+                      <AppIcon name="heart" className="h-5 w-5" />
+                    </span>
+                  </div>
+
+                  <div className="space-y-4">
+                    <HeroLayer title="Daily check-in" copy="Mood, energy, and symptoms become softer insight." />
+                    <HeroLayer title="AI companion" copy="Support that may guide, reflect, and encourage with care." />
+                    <HeroLayer title="Growth layer" copy="Community, mentorship, and stories that expand what feels possible." />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section id="community" className="grid gap-6 xl:grid-cols-[1.08fr_0.92fr]">
-          <article className="glass-panel-strong p-6 md:p-8">
-            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">Community</p>
-            <h2 className="mt-3 font-display text-3xl font-semibold text-[color:var(--text-strong)] md:text-4xl">
-              Safe Space for Sharing
-            </h2>
-            <p className="mt-4 text-sm leading-8 text-[var(--text)] md:text-base">
-              Anonymous posting, reporting, and moderated review create a supportive social layer without sacrificing safety.
-            </p>
-            <div className="mt-6 grid gap-4">
-              {COMMUNITY_POSTS.map((post) => (
-                <article key={post.alias} className="rounded-[1.75rem] border border-[var(--border)] bg-[var(--surface)] p-5">
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">{post.alias}</p>
-                  <h3 className="mt-2 font-display text-xl font-semibold text-[color:var(--text-strong)]">{post.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-[var(--text)]">{post.copy}</p>
-                </article>
-              ))}
+        <section className="landing-section" id="platform">
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">Platform pillars</p>
+              <h2 className="max-w-4xl font-display text-4xl font-semibold text-[color:var(--text-strong)] md:text-5xl">
+                One focus per layer, connected through one fluid experience.
+              </h2>
             </div>
-          </article>
 
-          <article id="stories" className="glass-panel p-6 md:p-8">
-            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">Role model stories</p>
-            <div className="mt-5 flex gap-4 overflow-x-auto pb-2">
-              {STORIES.map((story) => (
-                <article key={story.title} className="min-w-[18rem] rounded-[1.9rem] border border-[var(--border)] bg-[var(--surface)] p-5">
-                  <div className="h-32 rounded-[1.5rem] bg-[linear-gradient(180deg,#fffdfc_0%,#f2b8b5_100%)]" />
-                  <h3 className="mt-4 font-display text-xl font-semibold text-[color:var(--text-strong)]">{story.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-[var(--text)]">{story.copy}</p>
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+              {FEATURE_PILLARS.map((item) => (
+                <article key={item.title} className="rounded-[2rem] border border-[var(--border)] bg-[color:var(--surface-strong)]/72 p-7 shadow-[var(--shadow-soft)] backdrop-blur-xl transition duration-300 hover:-translate-y-1.5">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-[1.4rem] bg-[linear-gradient(135deg,var(--accent),var(--accent-2))] text-white">
+                    <AppIcon name={item.icon} className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-6 font-display text-2xl font-semibold text-[color:var(--text-strong)]">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-8 text-[var(--text)]">{item.copy}</p>
                 </article>
               ))}
             </div>
-          </article>
+          </div>
         </section>
 
-        <section className="glass-panel overflow-hidden p-6 md:p-8">
-          <div className="grid gap-5 xl:grid-cols-[1fr_auto] xl:items-center">
-            <div>
-              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">Final call to action</p>
-              <h2 className="mt-3 max-w-3xl font-display text-3xl font-semibold text-[color:var(--text-strong)] md:text-4xl">
-                Build a support ecosystem that feels timeless, safe, and truly empowering.
+        <section className="landing-section">
+          <div className="grid gap-10 xl:grid-cols-[0.95fr_1.05fr] xl:items-start">
+            <div className="space-y-4">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">Why it matters</p>
+              <h2 className="max-w-3xl font-display text-4xl font-semibold text-[color:var(--text-strong)] md:text-5xl">
+                Support should feel fluid, trustworthy, and deeply human.
               </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-8 text-[var(--text)] md:text-base">
-                Broom can grow from a gentle health tool into a platform for reflection, confidence, mentorship, and opportunity.
+              <p className="max-w-2xl text-base leading-9 text-[var(--text)]">
+                Broom is designed to reduce confusion, make daily planning easier, and help girls and young women feel understood rather than overwhelmed.
               </p>
             </div>
-            <div className="flex flex-col gap-3 sm:flex-row xl:flex-col">
+
+            <div className="grid gap-5 md:grid-cols-3">
+              {FLOW_ITEMS.map((item) => (
+                <article key={item.title} className="rounded-[2rem] border border-[var(--border)] bg-[color:var(--panel)]/82 p-6 shadow-[var(--shadow-soft)] backdrop-blur-xl">
+                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-[var(--muted)]">{item.eyebrow}</p>
+                  <h3 className="mt-4 font-display text-2xl font-semibold text-[color:var(--text-strong)]">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-8 text-[var(--text)]">{item.copy}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="landing-section" id="ai-support">
+          <div className="grid gap-10 xl:grid-cols-[1.02fr_0.98fr] xl:items-center">
+            <div className="space-y-4">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">AI support</p>
+              <h2 className="max-w-3xl font-display text-4xl font-semibold text-[color:var(--text-strong)] md:text-5xl">
+                Personalized guidance that stays suggestive, calm, and safe.
+              </h2>
+              <p className="max-w-2xl text-base leading-9 text-[var(--text)]">
+                The AI companion learns from profile memory, cycle rhythm, and recent check-ins so support can adapt over time without pretending to diagnose or replace professionals.
+              </p>
+            </div>
+
+            <div className="grid gap-4">
+              <GradientBand title="Learns over time" copy="Builds a personal baseline from onboarding, habits, and saved signals." />
+              <GradientBand title="Uses careful language" copy="Responds with may, could, and might instead of absolute conclusions." />
+              <GradientBand title="Works with humans" copy="Pairs AI with mentors, moderated community, and clear crisis escalation." />
+            </div>
+          </div>
+        </section>
+
+        <section className="landing-section" id="mentorship">
+          <div className="space-y-6">
+            <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
+              <div className="space-y-3">
+                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">Mentorship</p>
+                <h2 className="max-w-4xl font-display text-4xl font-semibold text-[color:var(--text-strong)] md:text-5xl">
+                  Verified mentors who guide with clarity and boundaries.
+                </h2>
+              </div>
+              <button type="button" className="primary-btn w-fit">
+                Connect with mentors
+              </button>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-3">
+              {MENTOR_CARDS.map((mentor, index) => (
+                <article key={mentor.name} className="rounded-[2rem] border border-[var(--border)] bg-[color:var(--surface-strong)]/76 p-6 shadow-[var(--shadow-soft)] backdrop-blur-xl transition duration-300 hover:-translate-y-1.5">
+                  <div className="h-40 rounded-[1.8rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.6),rgba(242,184,181,0.55))] p-5">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-[1.3rem] bg-white text-xl font-display text-[var(--accent-2)] shadow-[var(--shadow-soft)]">
+                      {index + 1}
+                    </div>
+                  </div>
+                  <h3 className="mt-5 font-display text-2xl font-semibold text-[color:var(--text-strong)]">{mentor.name}</h3>
+                  <p className="mt-2 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">{mentor.role}</p>
+                  <p className="mt-3 text-sm leading-8 text-[var(--text)]">{mentor.focus}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="landing-section" id="community">
+          <div className="grid gap-10 xl:grid-cols-[1.05fr_0.95fr]">
+            <div className="space-y-5">
+              <div className="space-y-3">
+                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">Community</p>
+                <h2 className="max-w-3xl font-display text-4xl font-semibold text-[color:var(--text-strong)] md:text-5xl">
+                  Anonymous by default. Safe by design. Built for shared growth.
+                </h2>
+              </div>
+
+              <div className="rounded-[2rem] border border-[var(--border)] bg-[color:var(--surface-strong)]/76 p-6 shadow-[var(--shadow-soft)] backdrop-blur-xl">
+                <div className="rounded-[1.6rem] border border-[var(--border)] bg-[color:var(--surface)]/86 px-5 py-4 text-sm text-[var(--muted)]">
+                  Share something with the community...
+                </div>
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex flex-wrap gap-2">
+                    {["Health", "Tech", "Learning", "Wins"].map((tag) => (
+                      <span key={tag} className="rounded-full border border-[var(--border)] bg-[color:var(--surface)] px-3 py-2 text-xs font-semibold text-[var(--muted)]">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <button type="button" className="primary-btn !px-6 !py-2.5">
+                    Post
+                  </button>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {COMMUNITY_CARDS.map((item) => (
+                  <article key={item.alias} className="rounded-[2rem] border border-[var(--border)] bg-[color:var(--panel)]/82 p-6 shadow-[var(--shadow-soft)] backdrop-blur-xl">
+                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">{item.alias}</p>
+                    <p className="mt-4 text-base leading-9 text-[var(--text-strong)]">{item.copy}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div className="rounded-[2.4rem] bg-[linear-gradient(90deg,#4b1740_0%,#de5d83_100%)] px-8 py-10 text-white shadow-[var(--shadow-soft)]">
+                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-white/70">Stories and role models</p>
+                <h3 className="mt-4 font-display text-4xl font-semibold">Be inspired. Be bold.</h3>
+                <p className="mt-4 max-w-xl text-base leading-8 text-white/78">
+                  Discover journeys of women in health, technology, leadership, and entrepreneurship who show what growth can look like.
+                </p>
+              </div>
+
+              <div className="grid gap-4">
+                {["Tech futures", "Health leadership", "Community confidence"].map((story) => (
+                  <article key={story} className="rounded-[2rem] border border-[var(--border)] bg-[color:var(--surface-strong)]/78 p-6 shadow-[var(--shadow-soft)] backdrop-blur-xl">
+                    <div className="h-28 rounded-[1.6rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.5),rgba(242,184,181,0.5))]" />
+                    <h3 className="mt-5 font-display text-2xl font-semibold text-[color:var(--text-strong)]">{story}</h3>
+                    <p className="mt-3 text-sm leading-8 text-[var(--text)]">
+                      Real journeys that help girls and young women see confidence, possibility, and direction in a more tangible way.
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="landing-section border-t border-[var(--border)]" id="footer">
+          <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
+            <div className="space-y-4">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">Next step</p>
+              <h2 className="max-w-4xl font-display text-4xl font-semibold text-[color:var(--text-strong)] md:text-5xl">
+                Create a support platform that feels premium, fluid, and ready to grow.
+              </h2>
+              <p className="max-w-2xl text-base leading-9 text-[var(--text)]">
+                Start with a calmer landing experience now, then continue shaping the product into a full ecosystem for care, confidence, and opportunity.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row">
               <Link to={primaryPath} className="primary-btn justify-center">
-                {appState.user ? "Open your dashboard" : "Get Started"}
+                {appState.user ? "Open workspace" : "Get started"}
               </Link>
               <button type="button" onClick={handlePreview} className="chip-btn justify-center">
-                Explore Preview
+                Open preview
               </button>
             </div>
           </div>
         </section>
-
-        <footer id="footer" className="glass-panel flex flex-col gap-4 px-5 py-5 text-sm text-[var(--text)] md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-4">
-            <BrandLogo size="sm" />
-            <div>
-              <p className="font-display text-lg font-semibold text-[color:var(--text-strong)]">Broom</p>
-              <p className="mt-1">A calm digital support space for women&apos;s health, reflection, and growth.</p>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-3 text-[var(--muted)]">
-            {NAV_ITEMS.map((item) => (
-              <a key={item.label} href={item.href} className="hover:text-[color:var(--text-strong)]">
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </footer>
-      </div>
+      </main>
     </div>
   );
 }
 
-function ValueBadge({ eyebrow, value, copy }) {
+function FloatingStat({ value, copy }) {
   return (
-    <article className="rounded-[1.7rem] border border-[var(--border)] bg-[var(--surface)] p-5">
-      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">{eyebrow}</p>
-      <h3 className="mt-3 font-display text-2xl font-semibold text-[color:var(--text-strong)]">{value}</h3>
+    <article className="rounded-[1.8rem] border border-[var(--border)] bg-[color:var(--surface-strong)]/76 p-5 shadow-[var(--shadow-soft)] backdrop-blur-xl">
+      <h3 className="font-display text-2xl font-semibold text-[color:var(--text-strong)]">{value}</h3>
       <p className="mt-2 text-sm leading-7 text-[var(--text)]">{copy}</p>
     </article>
   );
 }
 
-function MockTile({ title, copy }) {
+function HeroLayer({ title, copy }) {
   return (
-    <article className="rounded-[1.4rem] border border-[var(--border)] bg-[rgba(255,255,255,0.64)] p-4">
+    <article className="rounded-[1.6rem] border border-[var(--border)] bg-[rgba(255,255,255,0.5)] p-4 backdrop-blur-lg">
       <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">{title}</p>
       <p className="mt-2 text-sm leading-7 text-[var(--text)]">{copy}</p>
     </article>
   );
 }
 
-function SupportLine({ label, value }) {
+function GradientBand({ title, copy }) {
   return (
-    <div className="flex flex-col gap-1 rounded-[1.25rem] border border-[var(--border)] bg-[var(--panel)] px-4 py-3">
-      <span className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">{label}</span>
-      <span className="text-sm leading-7 text-[color:var(--text-strong)]">{value}</span>
-    </div>
+    <article className="rounded-[2rem] border border-[var(--border)] bg-[linear-gradient(135deg,rgba(255,255,255,0.62),rgba(242,184,181,0.28))] p-6 shadow-[var(--shadow-soft)] backdrop-blur-xl">
+      <h3 className="font-display text-2xl font-semibold text-[color:var(--text-strong)]">{title}</h3>
+      <p className="mt-3 text-sm leading-8 text-[var(--text)]">{copy}</p>
+    </article>
   );
 }
