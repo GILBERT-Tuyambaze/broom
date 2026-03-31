@@ -81,16 +81,6 @@ export const PREVIEW_COMMUNITY_POSTS = [
     status: "under_review",
     createdAtMs: daysAgo(2),
   }),
-  createCommunityPost({
-    id: "post-4",
-    alias: "LunarWave",
-    topic: "Healthy boundaries",
-    body: "How do you keep your community posts anonymous but still get useful feedback?",
-    replies: 6,
-    hearts: 18,
-    reports: 0,
-    createdAtMs: daysAgo(3),
-  }),
 ];
 
 export const PREVIEW_MODERATION_QUEUE = [
@@ -222,13 +212,6 @@ export function createPreviewSeedData() {
       createdAtMs: daysAgo(3),
     }),
     createLocalLog({
-      mood: "curious",
-      energy: 5,
-      focus: "Track patterns and adjust the schedule",
-      symptoms: "Light fatigue",
-      createdAtMs: daysAgo(4),
-    }),
-    createLocalLog({
       mood: "anxious",
       energy: 4,
       focus: "Rest more and avoid overload",
@@ -241,13 +224,6 @@ export function createPreviewSeedData() {
       focus: "Recovery day and journaling",
       symptoms: "Cramps, fatigue, low motivation",
       createdAtMs: daysAgo(10),
-    }),
-    createLocalLog({
-      mood: "optimistic",
-      energy: 7,
-      focus: "Connect habits to my cycle phase",
-      symptoms: "None",
-      createdAtMs: daysAgo(8),
     }),
   ];
 
@@ -271,14 +247,6 @@ export function createPreviewSeedData() {
     createChatMessage(
       "assistant",
       "Broom can pair your personal tracking with a safer anonymous community, verified mentors, and stronger AI guardrails so support feels more human and trustworthy.",
-    ),
-    createChatMessage(
-      "user",
-      "Give me one simple way to plan rest days.",
-    ),
-    createChatMessage(
-      "assistant",
-      "Try blocking one recovery window after your lower-energy day and set a single small habit, like a soothing tea or a short mindfulness break.",
     ),
   ];
 

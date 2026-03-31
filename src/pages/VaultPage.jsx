@@ -67,7 +67,7 @@ export function VaultPage() {
   const crisisProtocol = appState.crisisProtocol.length ? appState.crisisProtocol : PREVIEW_CRISIS_PROTOCOL;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <section className="glass-panel-strong overflow-hidden p-8">
         <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr] xl:items-center">
           <div className="space-y-4">
@@ -91,8 +91,8 @@ export function VaultPage() {
         </div>
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[1.06fr_0.94fr]">
-        <Panel eyebrow="Mentorship hub" title="Connect with inspiring women in tech and beyond">
+      <section className="grid gap-4 xl:grid-cols-[1.06fr_0.94fr]">
+        <Panel compact eyebrow="Mentorship hub" title="Connect with inspiring women in tech and beyond">
           <div className="flex flex-wrap gap-2">
             {["All", "Tech", "Health", "Business", "Leadership"].map((filter, index) => (
               <button key={filter} type="button" className={index === 0 ? "primary-btn !px-4 !py-2.5" : "chip-btn"}>
@@ -103,23 +103,23 @@ export function VaultPage() {
 
           <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {mentors.map((mentor, index) => (
-              <article key={mentor.name} className="rounded-[1.8rem] border border-white/10 bg-white/5 p-5">
-                <div className="flex items-start gap-4">
-                  <div className={`flex h-14 w-14 items-center justify-center rounded-[1.2rem] text-lg font-semibold text-white ${
+              <article key={mentor.name} className="min-w-0 overflow-hidden rounded-[1.8rem] border border-white/10 bg-white/5 p-5">
+                <div className="flex flex-wrap items-start gap-4">
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-[1.2rem] text-base font-semibold text-white ${
                     index === 0 ? "bg-blue-500" : index === 1 ? "bg-emerald-500" : "bg-orange-500"
                   }`}>
                     {mentor.name.split(" ").map((part) => part[0]).slice(0, 2).join("")}
                   </div>
                   <div className="min-w-0">
-                    <h3 className="font-display text-xl font-semibold text-white">{mentor.name}</h3>
-                    <p className="text-sm text-slate-300">{mentor.role}</p>
-                    <p className="mt-1 text-sm font-medium text-[var(--muted)]">{mentor.focus}</p>
+                    <h3 className="font-display text-lg font-semibold leading-tight text-white break-words">{mentor.name}</h3>
+                    <p className="text-sm text-slate-300 leading-6">{mentor.role}</p>
+                    <p className="mt-1 text-sm font-medium leading-6 text-[var(--muted)] break-words">{mentor.focus}</p>
                   </div>
                 </div>
 
                 <div className="mt-4 flex flex-wrap gap-2">
                   {mentor.focus.split(",").slice(0, 3).map((tag) => (
-                    <span key={tag} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-[var(--muted)]">
+                    <span key={tag} className="max-w-full truncate rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-[var(--muted)]">
                       {tag.trim()}
                     </span>
                   ))}
@@ -145,7 +145,7 @@ export function VaultPage() {
           </div>
         </Panel>
 
-        <Panel eyebrow="Access and AI safety" title="Human support with stronger trust systems">
+        <Panel compact eyebrow="Access and AI safety" title="Human support with stronger trust systems">
           <div className="grid gap-4 md:grid-cols-2">
             {mentorshipAccess.map((item) => (
               <article key={item.title} className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5">

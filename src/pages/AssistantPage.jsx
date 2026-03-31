@@ -17,8 +17,8 @@ export function AssistantPage() {
   ];
 
   return (
-    <div className="grid gap-6 xl:grid-cols-[0.72fr_1.28fr]">
-      <Panel eyebrow="Context" title="What the assistant knows right now">
+    <div className="grid gap-4 xl:grid-cols-[0.9fr_1.1fr]">
+      <Panel compact eyebrow="Context" title="What the assistant knows right now">
         <div className="space-y-4">
           <ContextCard title="User profile" copy={contextSummary} />
           <ContextCard title="Recommended prompts" copy="Ask for a 3-day plan, symptom reflection, study routine, work pacing, or a summary of saved signals." />
@@ -41,6 +41,7 @@ export function AssistantPage() {
       </Panel>
 
       <Panel
+        compact
         eyebrow="Chatbox"
         title="AI copilot"
         action={
@@ -49,7 +50,7 @@ export function AssistantPage() {
           </span>
         }
       >
-        <div className="flex min-h-[34rem] flex-col gap-4 rounded-[2rem] border border-white/10 bg-black/10 p-4">
+        <div className="flex flex-col gap-4 rounded-[2rem] border border-white/10 bg-black/10 p-4">
           <div className="flex-1 space-y-4 overflow-y-auto pr-1">
             {appState.messages.map((message, index) => (
               <ChatMessage key={`${message.role}-${index}-${message.createdAtMs || index}`} role={message.role} text={message.text} />

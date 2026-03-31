@@ -41,7 +41,7 @@ export function TrackerPage() {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <section className="glass-panel-strong overflow-hidden p-8">
         <div className="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
           <div className="space-y-3">
@@ -81,14 +81,14 @@ export function TrackerPage() {
         ))}
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
-        <Panel eyebrow="Monthly view" title="Phase-colored cycle calendar">
+      <section className="grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
+        <Panel compact eyebrow="Monthly view" title="Phase-colored cycle calendar">
           <div id="calendar">
             <CycleCalendar profile={appState.profile} />
           </div>
         </Panel>
 
-        <Panel eyebrow="Quick log" title="What should Broom notice today?">
+        <Panel compact eyebrow="Quick log" title="What should Broom notice today?">
           <div id="quick-log" className="space-y-5">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">How are you feeling?</p>
@@ -126,8 +126,8 @@ export function TrackerPage() {
         </Panel>
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-        <Panel eyebrow="Cycle summary" title="Estimated rhythm and support cues">
+      <section className="grid gap-4 xl:grid-cols-[0.95fr_1.05fr]">
+        <Panel compact eyebrow="Cycle summary" title="Estimated rhythm and support cues">
           <div className="grid gap-4 md:grid-cols-2">
             {[
               {
@@ -158,7 +158,7 @@ export function TrackerPage() {
           </div>
         </Panel>
 
-        <Panel eyebrow="Recent timeline" title="Latest check-ins">
+        <Panel compact eyebrow="Recent timeline" title="Latest check-ins">
           <div className="space-y-4">
             {appState.logs.length ? (
               appState.logs.map((log, index) => (

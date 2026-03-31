@@ -19,8 +19,8 @@ export function ProfilePage() {
   ];
 
   return (
-    <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
-      <Panel eyebrow="Profile editor" title="Update personalization settings">
+    <div className="grid gap-5 xl:grid-cols-[1.05fr_0.95fr]">
+      <Panel compact eyebrow="Profile editor" title="Update personalization settings">
         <form
           className="grid gap-4 md:grid-cols-2"
           onSubmit={async (event) => {
@@ -65,7 +65,7 @@ export function ProfilePage() {
         </form>
       </Panel>
 
-      <Panel eyebrow="Snapshot" title="Workspace profile summary">
+      <Panel compact eyebrow="Snapshot" title="Workspace profile summary">
         <div className="space-y-4">
           <article className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
             <h3 className="font-display text-xl font-semibold text-white">{roleConfig.title}</h3>

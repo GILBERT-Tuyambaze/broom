@@ -10,7 +10,7 @@ export function Sidebar({ profile, messagesCount, logsCount }) {
 
   return (
     <>
-      <aside className="glass-panel-strong sticky top-6 hidden h-[calc(100vh-3rem)] w-72 shrink-0 flex-col justify-between overflow-hidden p-6 lg:flex">
+      <aside className="glass-panel-strong rounded-none hidden min-h-screen w-72 shrink-0 flex-col justify-between overflow-hidden p-6 lg:flex">
         <div className="space-y-8">
           <div className="space-y-4">
             <BrandLogo
@@ -68,7 +68,7 @@ export function Sidebar({ profile, messagesCount, logsCount }) {
         </div>
       </aside>
 
-      <nav className="glass-panel sticky top-24 z-30 flex flex-wrap gap-2 p-3 lg:hidden">
+      <nav className="glass-panel z-30 flex flex-wrap gap-2 p-3 lg:hidden">
         {navItems.map((item) => (
           <NavLink
             key={item.to}

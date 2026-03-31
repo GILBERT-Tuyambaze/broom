@@ -1,11 +1,12 @@
 window.BLOOM_CONFIG = {
   firebase: {
-    apiKey: "PASTE_FIREBASE_API_KEY",
-    authDomain: "PASTE_FIREBASE_AUTH_DOMAIN",
-    projectId: "PASTE_FIREBASE_PROJECT_ID",
-    storageBucket: "PASTE_FIREBASE_STORAGE_BUCKET",
-    messagingSenderId: "PASTE_FIREBASE_MESSAGING_SENDER_ID",
-    appId: "PASTE_FIREBASE_APP_ID",
+    apiKey: "AIzaSyADJQUy8cH5yWFJBzEuZuBb_o0JCvcpBxg",
+    authDomain: "bloom-79bcc.firebaseapp.com",
+    projectId: "bloom-79bcc",
+    storageBucket: "bloom-79bcc.firebasestorage.app",
+    messagingSenderId: "809077399668",
+    appId: "1:809077399668:web:38e976c0f94e6798903121",
+    measurementId: "G-GKMJDDBD5W"
   },
   ai: {
     enabled: true,

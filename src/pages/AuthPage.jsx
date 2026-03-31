@@ -1,4 +1,4 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { BrandLogo } from "../components/layout/BrandLogo.jsx";
 import { AppIcon } from "../components/shared/AppIcon.jsx";
 import { useAppContext } from "../context/AppContext.jsx";
@@ -19,6 +19,7 @@ export function AuthPage() {
     signIn,
     signUp,
   } = useAppContext();
+  const navigate = useNavigate();
 
   if (appState.user) {
     return <Navigate to="/app/dashboard" replace />;
@@ -31,10 +32,14 @@ export function AuthPage() {
           <Link to="/" className="chip-btn border-white/20 text-white hover:bg-white/10">
             Back to landing
           </Link>
-          <BrandLogo size="sm" withWordmark title="BLOOM" subtitle="Secure access" titleClassName="text-base text-white" subtitleClassName="normal-case tracking-normal text-white/70" />
+          <BrandLogo size="sm" withWordmark title="Broom" subtitle="Secure access" titleClassName="text-base text-white" subtitleClassName="normal-case tracking-normal text-white/70" />
+        </div>
+
+        <div className="grid flex-1 gap-6 xl:grid-cols-[1.1fr_0.9fr] xl:items-center">
+          <section className="hidden rounded-[2.4rem] border border-white/10 bg-white/6 p-10 text-white shadow-[0_24px_80px_rgba(37,8,36,0.28)] backdrop-blur-2xl xl:block">
             <div className="max-w-2xl space-y-8">
               <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-white/80">
-                BLOOM workspace
+                Broom workspace
               </div>
 
               <div className="space-y-4">
@@ -42,7 +47,7 @@ export function AuthPage() {
                   Welcome back
                 </h1>
                 <p className="max-w-xl text-base leading-8 text-white/78">
-                  Sign in to continue your journey with BLOOM through health awareness, emotional support, mentorship, and safer community connection.
+                  Sign in to continue your journey with Broom through health awareness, emotional support, mentorship, and safer community connection.
                 </p>
               </div>
 
@@ -71,7 +76,7 @@ export function AuthPage() {
               <h2 className="font-display text-4xl font-semibold tracking-tight">Welcome Back</h2>
               <p className="text-sm leading-7 text-white/72">
                 {authView === "signin"
-                  ? "Sign in to continue your journey with BLOOM."
+                  ? "Sign in to continue your journey with Broom."
                   : "Create an account to unlock your personal support space."}
               </p>
             </div>
@@ -129,6 +134,7 @@ export function AuthPage() {
                     const ok = await signIn(String(data.get("email") || "").trim(), String(data.get("password") || ""));
                     if (ok) {
                       event.currentTarget.reset();
+                      navigate("/app/dashboard", { replace: true });
                     }
                   }}
                 >
@@ -154,6 +160,7 @@ export function AuthPage() {
                     );
                     if (ok) {
                       event.currentTarget.reset();
+                      navigate("/app/dashboard", { replace: true });
                     }
                   }}
                 >

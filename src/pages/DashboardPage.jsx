@@ -29,17 +29,17 @@ const ROLE_ACTIONS = {
   user: [
     { to: "/app/assistant", title: "Talk to Broom", copy: "Get reflective support, next-step planning, and AI guidance built around your saved context.", icon: "spark" },
     { to: "/app/tracker", title: "View cycle calendar", copy: "See phase colors, timeline signals, and calmer planning cues across the month.", icon: "calendar" },
-    { to: "/app/vault", title: "Open growth vault", copy: "Explore trusted content for health, emotional awareness, mentorship, and skill building.", icon: "library" },
+    { to: "/app/mentorship", title: "Explore mentorship", copy: "Connect with mentors, plan sessions, and grow with guided support tailored to your goals.", icon: "spark" },
   ],
   mentor: [
     { to: "/app/tracker", title: "Open support queue", copy: "Review upcoming sessions, learner context, and safer follow-up moments before you respond.", icon: "calendar" },
     { to: "/app/assistant", title: "Draft with mentor AI", copy: "Shape answers with clearer boundaries, calmer tone, and safer wording for guidance.", icon: "spark" },
-    { to: "/app/vault", title: "Use mentor resources", copy: "Access playbooks for communication, group discussions, and emotional safety.", icon: "library" },
+    { to: "/app/community", title: "Manage community space", copy: "Help keep discussion threads safe, supportive, and aligned with mentorship goals.", icon: "users" },
   ],
   admin: [
     { to: "/app/tracker", title: "Review moderation flow", copy: "See flagged posts, temporary hides, and escalation states in one operational view.", icon: "shield" },
     { to: "/app/assistant", title: "Inspect AI safeguards", copy: "Monitor guardrail quality, flagged responses, and crisis handling behavior.", icon: "spark" },
-    { to: "/app/vault", title: "Open policy vault", copy: "Access governance references for mentors, community rules, and platform trust systems.", icon: "library" },
+    { to: "/app/community", title: "Review community safety", copy: "Monitor community posts and crisis pathways to keep the platform secure.", icon: "users" },
   ],
 };
 
@@ -97,7 +97,7 @@ export function DashboardPage() {
           ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <WorkspaceHero role={role} profile={appState.profile} />
 
       <section className="grid gap-4 xl:grid-cols-3">
@@ -118,7 +118,7 @@ export function DashboardPage() {
 
       <section className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
         {role === "user" ? (
-          <Panel eyebrow="Daily intake" title="Capture the signals Broom should use">
+          <Panel compact eyebrow="Daily intake" title="Capture the signals Broom should use">
             <form
               className="space-y-4"
               onSubmit={async (event) => {
@@ -167,7 +167,7 @@ export function DashboardPage() {
           </Panel>
         )}
 
-        <Panel eyebrow="Quick actions" title="Use the right workspace tools next">
+        <Panel compact eyebrow="Quick actions" title="Use the right workspace tools next">
           <div className="grid gap-4">
             {ROLE_ACTIONS[role].map((item) => (
               <ActionTile key={item.title} {...item} />
@@ -176,7 +176,7 @@ export function DashboardPage() {
         </Panel>
       </section>
 
-      <Panel eyebrow={role === "admin" ? "Live oversight" : role === "mentor" ? "Support snapshot" : "Personalization"} title={role === "admin" ? "What needs attention now" : role === "mentor" ? "Current mentorship picture" : "How Broom is shaping the experience"}>
+      <Panel compact eyebrow={role === "admin" ? "Live oversight" : role === "mentor" ? "Support snapshot" : "Personalization"} title={role === "admin" ? "What needs attention now" : role === "mentor" ? "Current mentorship picture" : "How Broom is shaping the experience"}>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {(role === "admin"
             ? [

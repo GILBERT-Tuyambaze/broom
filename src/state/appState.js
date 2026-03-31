@@ -105,6 +105,40 @@ const ROUTE_META = {
       copy: "Moderation standards, mentor policy, AI guardrails, and governance references for the platform.",
     },
   },
+  "/app/community": {
+    user: {
+      eyebrow: "Community hub",
+      title: "Community",
+      copy: "Share posts, read guidelines, and stay connected through safer, moderated support spaces.",
+    },
+    mentor: {
+      eyebrow: "Community hub",
+      title: "Community",
+      copy: "Review shared threads, support learner discussions, and help maintain a safe circle.",
+    },
+    admin: {
+      eyebrow: "Community review",
+      title: "Community",
+      copy: "Monitor trusted community activity, guidelines, and crisis pathways for safety oversight.",
+    },
+  },
+  "/app/mentorship": {
+    user: {
+      eyebrow: "Mentorship connect",
+      title: "Mentorship",
+      copy: "Find mentors, plan sessions, and grow with guided support that matches your goals.",
+    },
+    mentor: {
+      eyebrow: "Mentor hub",
+      title: "Mentorship",
+      copy: "Manage mentee sessions, access structured support models, and keep guidance safe.",
+    },
+    admin: {
+      eyebrow: "Mentor access",
+      title: "Mentorship",
+      copy: "Review mentor matching, access models, and quality standards for trusted support.",
+    },
+  },
   "/app/profile": {
     user: {
       eyebrow: "Identity Layer",
@@ -155,6 +189,18 @@ export function getNavigationItems(role = "user") {
       label: role === "admin" ? "Safety Tracker" : role === "mentor" ? "Sessions" : "Cycle Tracker",
       short: "Track",
       icon: role === "admin" ? "shield" : "calendar",
+    },
+    {
+      to: "/app/community",
+      label: role === "admin" ? "Community Monitor" : role === "mentor" ? "Mentor Community" : "Community Hub",
+      short: "Comm",
+      icon: "users",
+    },
+    {
+      to: "/app/mentorship",
+      label: role === "admin" ? "Mentor Access" : role === "mentor" ? "Mentor Hub" : "Mentorship",
+      short: "Mentor",
+      icon: "spark",
     },
     {
       to: "/app/vault",

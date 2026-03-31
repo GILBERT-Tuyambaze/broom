@@ -22,7 +22,7 @@ export function AppLayout() {
   if (appState.firebaseConfigured && !appState.aiModel) notices.push({ id: "ai", type: "info", text: "Auth and Firestore are live, but AI is using local fallback mode until Firebase AI Logic is available." });
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden">
       <AppBackdrop />
       <OnboardingModal
         open={onboardingOpen}
@@ -35,10 +35,10 @@ export function AppLayout() {
         }}
       />
 
-      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1600px] gap-6 px-4 py-6 md:px-6">
+      <div className="relative z-10 flex min-h-screen w-full max-w-none gap-6 px-0 py-0">
         <Sidebar profile={appState.profile} messagesCount={appState.messages.length} logsCount={appState.logs.length} />
 
-        <div className="flex min-w-0 flex-1 flex-col gap-6">
+        <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
           <Topbar
             profile={appState.profile}
             onOpenOnboarding={() => setOnboardingOpen(true)}
@@ -48,20 +48,22 @@ export function AppLayout() {
             }}
           />
 
-          <div className="space-y-3">
-            {notices.map((notice) => (
-              <div
-                key={notice.id}
-                className={`glass-panel px-5 py-4 text-sm ${
-                  notice.type === "error" ? "text-rose-200" : notice.type === "success" ? "text-emerald-200" : "text-slate-200"
-                }`}
-              >
-                {notice.text}
-              </div>
-            ))}
-          </div>
+          <div className="min-h-0 overflow-y-auto px-6 py-6">
+            <div className="space-y-3">
+              {notices.map((notice) => (
+                <div
+                  key={notice.id}
+                  className={`glass-panel px-5 py-4 text-sm ${
+                    notice.type === "error" ? "text-rose-200" : notice.type === "success" ? "text-emerald-200" : "text-slate-200"
+                  }`}
+                >
+                  {notice.text}
+                </div>
+              ))}
+            </div>
 
-          <Outlet />
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>

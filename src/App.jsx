@@ -12,6 +12,8 @@ const AssistantPage = lazy(() => import("./pages/AssistantPage.jsx").then((modul
 const TrackerPage = lazy(() => import("./pages/TrackerPage.jsx").then((module) => ({ default: module.TrackerPage })));
 const VaultPage = lazy(() => import("./pages/VaultPage.jsx").then((module) => ({ default: module.VaultPage })));
 const ProfilePage = lazy(() => import("./pages/ProfilePage.jsx").then((module) => ({ default: module.ProfilePage })));
+const CommunityPage = lazy(() => import("./pages/CommunityPage.jsx").then((module) => ({ default: module.CommunityPage })));
+const MentorshipPage = lazy(() => import("./pages/MentorshipPage.jsx").then((module) => ({ default: module.MentorshipPage })));
 
 function ProtectedLayout() {
   const { appState } = useAppContext();
@@ -32,7 +34,7 @@ export default function App() {
               <div className="flex min-h-screen items-center justify-center bg-[linear-gradient(180deg,var(--bg),var(--bg-alt))] px-6">
                 <div className="glass-panel flex items-center gap-4 px-6 py-5 text-sm text-slate-200">
                   <BrandLogo size="sm" />
-                  <span>Loading BLOOM...</span>
+                  <span>Loading Broom...</span>
                 </div>
               </div>
             }
@@ -45,6 +47,8 @@ export default function App() {
                 <Route path="dashboard" element={<DashboardPage />} />
                 <Route path="assistant" element={<AssistantPage />} />
                 <Route path="tracker" element={<TrackerPage />} />
+                <Route path="community" element={<CommunityPage />} />
+                <Route path="mentorship" element={<MentorshipPage />} />
                 <Route path="vault" element={<VaultPage />} />
                 <Route path="profile" element={<ProfilePage />} />
               </Route>
