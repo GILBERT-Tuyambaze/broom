@@ -7,7 +7,7 @@ const SIZE_MAP = {
 export function BrandLogo({
   size = "md",
   withWordmark = false,
-  title = "Broom",
+  title = "BLOOM",
   subtitle = "",
   className = "",
   titleClassName = "",
@@ -17,7 +17,7 @@ export function BrandLogo({
     <div className={`flex items-center gap-4 ${className}`.trim()}>
       <img
         src="/app-icon.svg"
-        alt="Broom logo"
+        alt="BLOOM logo"
         className={`${SIZE_MAP[size] || SIZE_MAP.md} shrink-0 object-cover shadow-[0_14px_30px_var(--ring)]`.trim()}
       />
       {withWordmark ? (

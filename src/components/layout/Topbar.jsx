@@ -35,21 +35,8 @@ export function Topbar({ profile, onOpenOnboarding, onSignOut }) {
             {roleConfig.label}
           </span>
         </div>
-        <div className="flex flex-col gap-3 xl:flex-row xl:items-end xl:justify-between">
-          <div>
-            <h1 className="font-display text-3xl font-semibold tracking-tight text-white md:text-4xl">
-              {routeMeta.title}
-            </h1>
-            <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-300">
-              {routeMeta.copy}
-            </p>
-          </div>
-          <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-3 py-2">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--accent),var(--accent-2))] text-sm font-semibold text-[var(--button-text)]">
-              {getInitials(profile?.displayName)}
-            </span>
             <div className="min-w-0">
-              <p className="truncate text-sm font-semibold text-white">{profile?.displayName || "Broom workspace"}</p>
+              <p className="truncate text-sm font-semibold text-white">{profile?.displayName || "BLOOM workspace"}</p>
               <p className="truncate text-xs uppercase tracking-[0.18em] text-[var(--muted)]">{roleConfig.title}</p>
             </div>
           </div>

@@ -32,7 +32,7 @@ export default function App() {
               <div className="flex min-h-screen items-center justify-center bg-[linear-gradient(180deg,var(--bg),var(--bg-alt))] px-6">
                 <div className="glass-panel flex items-center gap-4 px-6 py-5 text-sm text-slate-200">
                   <BrandLogo size="sm" />
-                  <span>Loading Broom...</span>
+                  <span>Loading BLOOM...</span>
                 </div>
               </div>
             }

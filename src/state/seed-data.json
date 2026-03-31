@@ -1,0 +1,316 @@
+{
+  "users": [
+    {
+      "uid": "preview-user",
+      "email": "preview@broom.local",
+      "displayName": "Preview User",
+      "profile": {
+        "role": "user",
+        "location": "Kigali, Rwanda",
+        "ageRange": "18-24",
+        "cycleLength": 29,
+        "lastPeriodStart": "2026-03-20",
+        "primaryGoal": "Reduce stress while staying productive and more aware of my body.",
+        "focusAreas": "Cycle tracking, habit consistency, study planning, sleep, emotional awareness",
+        "supportNeeds": "Keep guidance calm, practical, and specific. Suggest realistic next steps instead of too much at once.",
+        "aiTone": "supportive",
+        "consentToPersonalization": true
+      }
+    },
+    {
+      "uid": "mentor-1",
+      "email": "mentor.arielle@broom.local",
+      "displayName": "Arielle N.",
+      "profile": {
+        "role": "mentor",
+        "location": "Nairobi, Kenya",
+        "ageRange": "25-34",
+        "cycleLength": 28,
+        "lastPeriodStart": "2026-03-22",
+        "primaryGoal": "Help learners connect body signals with safer daily habits.",
+        "focusAreas": "Cycle literacy, emotional awareness, session planning",
+        "supportNeeds": "Model compassionate coaching without giving medical advice.",
+        "aiTone": "coach",
+        "consentToPersonalization": true
+      }
+    },
+    {
+      "uid": "admin-1",
+      "email": "admin@broom.local",
+      "displayName": "Broom Admin",
+      "profile": {
+        "role": "admin",
+        "location": "Remote",
+        "ageRange": "35-44",
+        "cycleLength": 30,
+        "lastPeriodStart": "2026-03-15",
+        "primaryGoal": "Keep the platform safe, accessible, and respectful.",
+        "focusAreas": "Moderation, mentor quality, AI guardrails",
+        "supportNeeds": "Clear signal and content review workflows.",
+        "aiTone": "direct",
+        "consentToPersonalization": true
+      }
+    }
+  ],
+  "logs": [
+    {
+      "uid": "preview-user",
+      "mood": "focused",
+      "energy": 7,
+      "focus": "Prepare for presentation and review class notes",
+      "symptoms": "Mild bloating, manageable",
+      "createdAt": "2026-03-31T08:00:00.000Z"
+    },
+    {
+      "uid": "preview-user",
+      "mood": "steady",
+      "energy": 6,
+      "focus": "Deep work and hydration",
+      "symptoms": "Light cramps in the morning",
+      "createdAt": "2026-03-30T08:00:00.000Z"
+    },
+    {
+      "uid": "preview-user",
+      "mood": "energized",
+      "energy": 8,
+      "focus": "Workout and finish coding task",
+      "symptoms": "Low symptoms, high motivation",
+      "createdAt": "2026-03-28T08:00:00.000Z"
+    },
+    {
+      "uid": "preview-user",
+      "mood": "anxious",
+      "energy": 4,
+      "focus": "Rest more and avoid overload",
+      "symptoms": "Headache and low concentration",
+      "createdAt": "2026-03-25T08:00:00.000Z"
+    },
+    {
+      "uid": "preview-user",
+      "mood": "low",
+      "energy": 3,
+      "focus": "Recovery day and journaling",
+      "symptoms": "Cramps, fatigue, low motivation",
+      "createdAt": "2026-03-21T08:00:00.000Z"
+    },
+    {
+      "uid": "preview-user",
+      "mood": "curious",
+      "energy": 5,
+      "focus": "Track patterns and adjust the schedule",
+      "symptoms": "Light fatigue",
+      "createdAt": "2026-03-24T08:00:00.000Z"
+    },
+    {
+      "uid": "preview-user",
+      "mood": "optimistic",
+      "energy": 7,
+      "focus": "Connect habits to my cycle phase",
+      "symptoms": "None",
+      "createdAt": "2026-03-29T08:00:00.000Z"
+    },
+    {
+      "uid": "mentor-1",
+      "mood": "attentive",
+      "energy": 7,
+      "focus": "Plan safe mentorship sessions",
+      "symptoms": "None",
+      "createdAt": "2026-03-30T09:00:00.000Z"
+    },
+    {
+      "uid": "admin-1",
+      "mood": "alert",
+      "energy": 6,
+      "focus": "Review reports and safety flags",
+      "symptoms": "Steady",
+      "createdAt": "2026-03-31T06:00:00.000Z"
+    }
+  ],
+  "messages": [
+    {
+      "uid": "preview-user",
+      "role": "assistant",
+      "text": "I am Broom's AI copilot. I can summarize your profile, connect mood with cycle patterns, and turn your logs into realistic next steps.",
+      "createdAt": "2026-03-31T08:05:00.000Z"
+    },
+    {
+      "uid": "preview-user",
+      "role": "user",
+      "text": "What do you notice from my recent check-ins?",
+      "createdAt": "2026-03-31T08:06:00.000Z"
+    },
+    {
+      "uid": "preview-user",
+      "role": "assistant",
+      "text": "Your recent logs suggest stronger focus and energy in the last few days compared with the beginning of the cycle. You also seem to benefit from calmer planning on lower-energy days.",
+      "createdAt": "2026-03-31T08:07:00.000Z"
+    },
+    {
+      "uid": "preview-user",
+      "role": "user",
+      "text": "How would community support and mentorship fit into my experience?",
+      "createdAt": "2026-03-31T08:08:00.000Z"
+    },
+    {
+      "uid": "preview-user",
+      "role": "assistant",
+      "text": "Broom can pair your personal tracking with a safer anonymous community, verified mentors, and stronger AI guardrails so support feels more human and trustworthy.",
+      "createdAt": "2026-03-31T08:09:00.000Z"
+    },
+    {
+      "uid": "preview-user",
+      "role": "user",
+      "text": "Give me one simple way to plan rest days.",
+      "createdAt": "2026-03-31T08:10:00.000Z"
+    },
+    {
+      "uid": "preview-user",
+      "role": "assistant",
+      "text": "Try blocking one recovery window after your lower-energy day and set a single small habit, like a soothing tea or a short mindfulness break.",
+      "createdAt": "2026-03-31T08:11:00.000Z"
+    }
+  ],
+  "communityPosts": [
+    {
+      "id": "post-1",
+      "alias": "QuietOrbit12",
+      "topic": "Energy planning",
+      "body": "I noticed I study better a few days after my period. Does anyone else plan difficult work around that window?",
+      "replies": 14,
+      "hearts": 38,
+      "reports": 0,
+      "status": "published",
+      "createdAt": "2026-03-31T05:00:00.000Z"
+    },
+    {
+      "id": "post-2",
+      "alias": "NovaLeaf",
+      "topic": "Stress support",
+      "body": "When cramps and deadline pressure happen together, what small habits help you stay calm without overloading yourself?",
+      "replies": 9,
+      "hearts": 22,
+      "reports": 0,
+      "status": "published",
+      "createdAt": "2026-03-30T07:30:00.000Z"
+    },
+    {
+      "id": "post-3",
+      "alias": "MangoSky",
+      "topic": "Moderation example",
+      "body": "This sample post has been temporarily hidden after two reports so an admin can review it before any stronger action is taken.",
+      "replies": 2,
+      "hearts": 1,
+      "reports": 2,
+      "status": "under_review",
+      "createdAt": "2026-03-29T10:00:00.000Z"
+    },
+    {
+      "id": "post-4",
+      "alias": "LunarWave",
+      "topic": "Healthy boundaries",
+      "body": "How do you keep your community posts anonymous but still get useful feedback?",
+      "replies": 6,
+      "hearts": 18,
+      "reports": 0,
+      "status": "published",
+      "createdAt": "2026-03-28T14:00:00.000Z"
+    }
+  ],
+  "communityGuidelines": [
+    {
+      "title": "Protect anonymity",
+      "copy": "Use aliases, avoid sharing direct contact details, and keep private medical or personal identifiers out of public threads."
+    },
+    {
+      "title": "Report first, ban later",
+      "copy": "One or two reports should temporarily hide a post for review. Final action belongs to an admin, not crowd voting alone."
+    },
+    {
+      "title": "No harmful advice",
+      "copy": "Medical misinformation, harassment, sexual content, and pressure tactics should trigger fast review and repeat-offender escalation."
+    },
+    {
+      "title": "Nudge positive behavior",
+      "copy": "Posting prompts should remind users to be respectful, avoid diagnosis, and support others without attacking them."
+    }
+  ],
+  "moderationQueue": [
+    {
+      "title": "Temporary hide threshold",
+      "copy": "One to two credible reports can hide content from the main feed while admins review context and user history."
+    },
+    {
+      "title": "Human decision",
+      "copy": "Admins can restore, warn, mute, suspend, or ban depending on severity and repeat behavior patterns."
+    },
+    {
+      "title": "Repeat offender policy",
+      "copy": "Accounts with repeated harmful posts move from warnings to stronger restrictions instead of instant permanent bans."
+    }
+  ],
+  "mentors": [
+    {
+      "name": "Arielle N.",
+      "role": "Frontend engineer",
+      "focus": "Career confidence, coding routines, interview prep",
+      "status": "Verified and trained",
+      "pricing": "Paid sessions with scholarship spots"
+    },
+    {
+      "name": "Dr. Teta U.",
+      "role": "Public health educator",
+      "focus": "Cycle education, wellbeing habits, health literacy",
+      "status": "Identity verified with boundaries training",
+      "pricing": "Paid sessions plus free group Q&A"
+    },
+    {
+      "name": "Lina M.",
+      "role": "Startup operator",
+      "focus": "Product thinking, entrepreneurship, growth planning",
+      "status": "Verified and admin-approved",
+      "pricing": "Hybrid access model"
+    }
+  ],
+  "mentorshipAccess": [
+    {
+      "title": "Mentor verification",
+      "copy": "Mentors apply, complete identity checks, and are approved by admins before they can guide users."
+    },
+    {
+      "title": "Training and boundaries",
+      "copy": "Training covers communication skills, safeguarding, privacy, and how to avoid acting like a therapist or clinician."
+    },
+    {
+      "title": "Accessibility model",
+      "copy": "Mentorship can be paid while still offering trials, sponsored sessions, or scholarship access for users who cannot pay."
+    }
+  ],
+  "aiGuardrails": [
+    {
+      "title": "No diagnosis",
+      "copy": "The assistant should never make absolute clinical claims. It uses language like may, might, and could be linked to."
+    },
+    {
+      "title": "Feedback and review",
+      "copy": "Users can flag misleading answers, and repeated reports should trigger prompt updates or human review of assistant behavior."
+    },
+    {
+      "title": "Context-aware caution",
+      "copy": "The model can personalize using goals, cycle signals, and habits, but it should stay advisory rather than authoritative."
+    }
+  ],
+  "crisisProtocol": [
+    {
+      "title": "Detect alarming language",
+      "copy": "Messages about self-harm, abuse, or severe distress should stop normal coaching and switch to a safer response mode."
+    },
+    {
+      "title": "Respond with care",
+      "copy": "The assistant should acknowledge distress, avoid judgment, and encourage immediate support rather than trying to solve the crisis alone."
+    },
+    {
+      "title": "Show help resources",
+      "copy": "The experience should surface relevant support contacts, trusted adults, or local crisis resources when available."
+    }
+  ]
+}

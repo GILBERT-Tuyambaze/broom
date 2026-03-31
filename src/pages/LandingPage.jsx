@@ -50,7 +50,7 @@ const FLOW_ITEMS = [
   {
     eyebrow: "Growth",
     title: "Move from support into confidence and opportunity",
-    copy: "Broom grows beyond tracking into mentorship, role models, and skills for the future.",
+    copy: "BLOOM grows beyond tracking into mentorship, role models, and skills for the future.",
   },
 ];
 
@@ -109,10 +109,7 @@ export function LandingPage() {
           <BrandLogo
             size="md"
             withWordmark
-            title="Broom"
-            subtitle="Women&apos;s health and empowerment"
-            className="gap-4"
-            titleClassName="text-lg"
+            title="BLOOM"
             subtitleClassName="normal-case tracking-normal text-sm font-medium"
           />
 
@@ -146,13 +143,13 @@ export function LandingPage() {
                   Understand your body. Protect your peace. Grow with support that evolves with you.
                 </h1>
                 <p className="max-w-3xl text-lg leading-9 text-[var(--text)]">
-                  Broom is a calm, futuristic platform for women&apos;s health, emotional awareness, AI-guided support, mentorship, and safe community connection.
+                  BLOOM is a calm, futuristic platform for women&apos;s health, emotional awareness, AI-guided support, mentorship, and safe community connection.
                 </p>
               </div>
 
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Link to={primaryPath} className="primary-btn justify-center">
-                  {appState.user ? "Enter your dashboard" : "Start with Broom"}
+                  {appState.user ? "Enter your dashboard" : "Start with BLOOM"}
                 </Link>
                 <button type="button" onClick={handlePreview} className="chip-btn justify-center">
                   Explore preview
@@ -189,7 +186,7 @@ export function LandingPage() {
                 <div className="flex h-full flex-col justify-between rounded-[2.3rem] border border-[var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.45),rgba(255,255,255,0.18))] p-6">
                   <div className="flex items-center justify-between">
                     <span className="rounded-full border border-[var(--border)] bg-[color:var(--surface)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">
-                      Broom flow
+                      BLOOM flow
                     </span>
                     <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--accent),var(--accent-2))] text-white">
                       <AppIcon name="heart" className="h-5 w-5" />
@@ -238,7 +235,7 @@ export function LandingPage() {
                 Support should feel fluid, trustworthy, and deeply human.
               </h2>
               <p className="max-w-2xl text-base leading-9 text-[var(--text)]">
-                Broom is designed to reduce confusion, make daily planning easier, and help girls and young women feel understood rather than overwhelmed.
+                BLOOM is designed to reduce confusion, make daily planning easier, and help girls and young women feel understood rather than overwhelmed.
               </p>
             </div>
 
