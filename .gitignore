@@ -1,3 +1,10 @@
 node_modules/
 dist/
 .DS_Store
+.history/
+.pptx_build/
+pptx_vendor/
+vendor_cache/
+*.log
+*.tmp
+Thumbs.db
